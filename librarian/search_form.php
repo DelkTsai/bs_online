@@ -1,4 +1,4 @@
-<!-- 搜索模态框 -->
+							<!-- Modal -->
 <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 <div class="modal-header"></div>
 <div class="modal-body">
@@ -14,8 +14,8 @@
 					<div class="controls">
 					<input type="text" name="author" id="inputPassword" placeholder="Author">
 					</div>
-					</div>
-
+					</div>		
+						
     <div class="control-group">
     <div class="controls">
     <button type="submit" class="btn btn-success">Search</button>

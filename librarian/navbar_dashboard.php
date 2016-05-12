@@ -16,10 +16,13 @@
 					<li><a href="member.php"><i class="icon-group icon-large"></i>&nbsp;成员管理</a></li>
 					<li><a href="archive.php"><i class="icon-list-alt icon-large"></i>&nbsp;归档</a></li>
 					<li><a href="#myModal" data-toggle="modal"><i class="icon-search icon-large"></i>&nbsp;高级搜索</a></li>
+
+
+					<!-- <li><a href="section.php"><i class="icon-group icon-large"></i>&nbsp;Sections</a></li> -->
 					<li><a href="logout.php"><i class="icon-signout icon-large"></i>&nbsp;登出</a></li>
 					</ul>
 					 <div class="pull-right">
-						<div class="admin">欢迎管理员</div>
+						<div class="admin">Welcome: Librarian</div>
                      </div>
                     </div>
                 </div>
@@ -27,3 +30,4 @@
         </div>
 
 <?php include 'search_form.php';?>
+

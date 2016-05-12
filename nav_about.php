@@ -22,11 +22,17 @@
                   <ul class="dropdown-menu">
                     <li><a href="stulogin.php">成员登录</a></li>
                     <li><a href="#">管理员登录</a></li>
+                    <!-- <li><a href="#">Something else here</a></li> -->
+<!--                     <li role="separator" class="divider"></li>
+                    <li class="dropdown-header">Nav header</li>
+                    <li><a href="#">Separated link</a></li>
+                    <li><a href="#">One more separated link</a></li> -->
                   </ul>
                 </li>
                 <li><a href="view_allbooks.php">所有图书</a></li>
                 <li class="active"><a href="about.php">关于</a></li>
-                <li><a href="http://xiyounet.org/contact.html">联系我们</a></li>
+                <li><a href="contact.php">联系我们</a></li>
+                
               </ul>
             </div>
           </div>

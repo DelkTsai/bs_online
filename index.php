@@ -1,10 +1,15 @@
 <?php include('header.php'); ?>
 <?php include('navbar_index.php');?>
-<?php include('slider.php');?>
+<?php include('slider.php');?> 
 
+
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
 
     <div class="container marketing">
 
+      <!-- Three columns of text below the carousel -->
       <div class="row">
         <div class="col-xs-4 col-sm-4 col-lg-4">
           <img class="img-circle" src="assets/img/1.png" alt="Generic placeholder image" width="120" height="120" >
@@ -26,6 +31,8 @@
         </div><!-- /.col-lg-4 -->
       </div><!-- /.row -->
 
+
+      <!-- START THE FEATURETTES -->
 
       <hr class="featurette-divider">
 
@@ -52,6 +59,9 @@
       </div>
 
       <hr class="featurette-divider">
+
+      <!-- /END THE FEATURETTES -->
 </div>
 
 <?php include('footer.php') ?>
+

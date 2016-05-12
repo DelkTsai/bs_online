@@ -1,4 +1,10 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: zh
+ * Date: 15-10-24
+ * Time: 下午10:57
+ */
 
 require_once('function.php');
 
@@ -21,6 +27,7 @@ function output_header()
         <link rel="icon" href="/favicon.ico">
         <title>网协图书馆</title>
 
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
         <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
         <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
@@ -37,6 +44,8 @@ function output_header()
         <script src="../assets/js/jquery/1.11.3/jquery.min.js"></script>
         <script src="../assets/js/bootstrap.min.js"></script>
 
+
+        <!-- Custom styles for this template -->
     </head>
     <?php
 }
@@ -72,7 +81,7 @@ function output_top_bar($flag)
 
 
     <body>
-<!--顶栏开始-->
+<!-- Fixed navbar --><!--顶栏开始-->
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
@@ -125,7 +134,8 @@ function output_top_bar($flag)
 function output_footer()
 {
     ?>
-  <!--底栏开始-->
+    <!--底栏开始-->
+<!-- FOOTER -->
 <footer class="footer ">
     <div class="container">
         <div class="row footer-top">

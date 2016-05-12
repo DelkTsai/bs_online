@@ -27,7 +27,7 @@
                  <li><a href="view_allbooks.php">所有图书</a></li>
                  <li><a target=_blank href="anidemo.php">数据统计</a></li>
                 <li><a href="about.php">关于</a></li>
-                <li><a href="http://xiyounet.org/contact.html">联系我们</a></li>
+                <li><a href="contact.php">联系我们</a></li>
                 
               </ul>
             </div>

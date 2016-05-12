@@ -14,7 +14,7 @@
         <script type="text/javascript" src="uikit/js/components/sticky.min.js"></script>
         <script type="text/javascript" src="js/ichart.1.2.1.min.js"></script>
     </head>
-
+    
 <body>
 <!--原点导航-->
 <nav id="nav-page" class="uk-flex uk-flex-middle uk-flex-center uk-visible-large">
@@ -51,33 +51,37 @@ data-uk-sticky="{top:-100, animation:'uk-animation-slide-top'}" >
 <!-- 图书总量后台统计 -->
 <?php include'dbcon.php';?>
 <?php
-      $sql = "SELECT * from book_sum";
-      $query = mysql_query($sql);
-      $num_row = mysql_num_rows($query);
-      if ($num_row > 0)
-      {
+$sql = "SELECT * from book_sum";
+$query = mysql_query($sql);
+$num_row = mysql_num_rows($query);
+
+if ($num_row > 0) {
+  # code...
+
+
         while($row=mysql_fetch_array($query))
-        {
-        $arr[] = $row['data'];
+        { 
+        $arr[] = $row['data'];  
         //将其他值 插入 null 变成新数组;
         $json_insert=array_pad($arr,30,null);
+          
+      } 
 
-        }
+} else {
+  //数据库中无数据则用 null 填充
+  $json_insert=array_pad([null],30,null);
+}
 
-      }
-      else
-       {
-        //数据库中无数据则用 null 填充
-        $json_insert=array_pad([null],30,null);
-        }
-      // 经过整合后的新数据转化成json
-      $json=json_encode($json_insert);
-      // 图书数量
-      $amount_of_book_sql = "SELECT book_id from book where status !='Archive'";
-      $amount_of_book_query = mysql_query($amount_of_book_sql);
-      $amount_of_book = mysql_num_rows($amount_of_book_query);
 
-      ?>
+
+// 经过整合后的新数据转化成json
+$json=json_encode($json_insert);
+//number of book copies
+$amount_of_book_sql = "SELECT book_id from book where status !='Archive'";
+$amount_of_book_query = mysql_query($amount_of_book_sql);
+$amount_of_book = mysql_num_rows($amount_of_book_query);
+
+?>
 
 <script type="text/javascript">
 
@@ -88,25 +92,25 @@ data-uk-sticky="{top:-100, animation:'uk-animation-slide-top'}" >
                   // ["5","6","8","10","12",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null];
                   //从 json_data 中取出数据
                   for(var i in json_data){
-
+                  
                         flow.push(json_data [i]);
                       }
 
                   //定义数据源(数组)
                   var data = [
-                      {
-                            name : 'book_summary',
-                            value:flow,
-                            color:'#32bdbc',
-                            // color:'#32bdbc',
-                            // color:'#ec4646',
-                            // 线宽
-                            line_width:3
-                      }
-                   ];
+                              {
+                                    name : 'book_summary',
+                                    value:flow,
+                                    color:'#32bdbc',
+                                    // color:'#32bdbc',
+                                    // color:'#ec4646',
+                                    // 线宽
+                                    line_width:3
+                              }
+                           ];
                   // 刻度水平轴的文本标签集合。(默认为[])
                   var labels = ["01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30"];
-
+                  
 
                   var chart = new iChart.LineBasic2D({
                         render : 'canvasDiv',
@@ -194,7 +198,7 @@ data-uk-sticky="{top:-100, animation:'uk-animation-slide-top'}" >
                               scale:[{
 
                                     //position 轴刻度的位置，一般由坐标系给出。(默认为'left')
-                                     position:'left',
+                                     position:'left', 
                                      //start_scale 起始刻度值。(默认为0)
                                      start_scale:0,
 
@@ -212,7 +216,7 @@ data-uk-sticky="{top:-100, animation:'uk-animation-slide-top'}" >
                                      scale_color:'#fff'
                               },
                               {
-                                     position:'bottom',
+                                     position:'bottom',     
                                      label : {color:'#fff',font : '微软雅黑',fontsize:11,fontweight:600},
                                      scale_enable : false,
                                      labels:labels
@@ -240,7 +244,7 @@ data-uk-sticky="{top:-100, animation:'uk-animation-slide-top'}" >
                                     // .fillText('图书总量(册)',x-40,y-12,false,'#9d987a')
                                     .textBaseline('top')
                                     .fillText('(时间)',x+w+12,y+h+10,false,'#999');
-
+                                    
                               }
                   }));
             //开始画图
@@ -258,7 +262,7 @@ data-uk-sticky="{top:-100, animation:'uk-animation-slide-top'}" >
                   // ["5","6","8","10","12",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null];
                   //从 json_data 中取出数据
                   for(var i in json_data){
-
+                  
                         flow.push(json_data [i]);
                       }
 
@@ -276,7 +280,7 @@ data-uk-sticky="{top:-100, animation:'uk-animation-slide-top'}" >
                            ];
                   // 刻度水平轴的文本标签集合。(默认为[])
                   var labels = ["01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30"];
-
+                  
 
                   var chart = new iChart.LineBasic2D({
                         render : 'canvasDiv2',
@@ -364,7 +368,7 @@ data-uk-sticky="{top:-100, animation:'uk-animation-slide-top'}" >
                               scale:[{
 
                                     //position 轴刻度的位置，一般由坐标系给出。(默认为'left')
-                                     position:'left',
+                                     position:'left', 
                                      //start_scale 起始刻度值。(默认为0)
                                      start_scale:0,
 
@@ -382,7 +386,7 @@ data-uk-sticky="{top:-100, animation:'uk-animation-slide-top'}" >
                                      scale_color:'#999'
                               },
                               {
-                                     position:'bottom',
+                                     position:'bottom',     
                                      label : {color:'#999',font : '微软雅黑',fontsize:11,fontweight:600},
                                      scale_enable : false,
                                      labels:labels
@@ -410,7 +414,7 @@ data-uk-sticky="{top:-100, animation:'uk-animation-slide-top'}" >
                                     // .fillText('图书总量(册)',x-40,y-12,false,'#9d987a')
                                     .textBaseline('top')
                                     .fillText('(时间)',x+w+12,y+h+10,false,'#999');
-
+                                    
                               }
                   }));
             //开始画图
@@ -438,6 +442,7 @@ data-uk-sticky="{top:-100, animation:'uk-animation-slide-top'}" >
 	</div>
 </div>
 
+
 <div class="uk-grid" id="dataTwo">
 	<!-- page 2 -->
 	<div class="uk-width-1-1 ">
@@ -455,3 +460,5 @@ data-uk-sticky="{top:-100, animation:'uk-animation-slide-top'}" >
 
 </body>
 </html>
+
+

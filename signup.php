@@ -1,5 +1,5 @@
-<?php
-// 变量赋空
+<?php 
+// 定义变量为空值
 $member_username = $member_password = $member_firstname = $member_lastname = $member_gender = $member_email = $member_id = "";
 
 
@@ -8,7 +8,7 @@ if(!isset($_POST['signup'])){
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST")
-{
+{		
 
 		if 	(empty($_POST["username"]))
     		{$nameErr = "Name is required";}
@@ -31,6 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 			}
 
 
+
 		if  (empty($_POST["firstname"]))
 			{$firstnameErr = "firstname is required";}
 		else
@@ -40,6 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 				{$firstnameErr = "First Forbiden";
 					exit('Invalid Firstname Formate');}
 			}
+
 
 
 		if  (empty($_POST["lastname"]))
@@ -53,6 +55,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 			}
 
 
+
+
 		if  (empty($_POST["gender"]))
 			{$genderErr = "gender is required";}
 		else
@@ -64,13 +68,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 			}
 
 
+
+
 		if (empty($_POST["email"]))
 			{$emailErr = "email is required";}
 		else
 			{$member_email = test_input($_POST['email']);
 
 			$email = test_input($_POST["email"]);
-   			// 正则验证 Email
+   			 // check if e-mail address syntax is valid
     		if (!preg_match("/([\w\-]+\@[\w\-]+\.[\w\-]+)/",$email))
       		{
       		$emailErr = "Invalid email format";}
@@ -90,37 +96,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
 }
 
-  // 使用 PHP trim() 函数去除用户输入数据中不必要的字符 (如：空格，tab，换行)
-  // 使用 PHP stripslashes()函数去除用户输入数据中的反斜杠 (\)
-  		function test_input($data)
-  	{
-   		  $data = trim($data);
-    		$data = stripslashes($data);
-    		$data = htmlspecialchars($data);
-    		return $data;
-  	}
-  //包含数据库文件
-  include('dbcon.php');
+// 使用 PHP trim() 函数去除用户输入数据中不必要的字符 (如：空格，tab，换行)
+// 使用PHP stripslashes()函数去除用户输入数据中的反斜杠 (\)
 
-  //检测用户名是否已经存在
-  $check_query = mysql_query("SELECT username FROM member WHERE username='$member_username' limit 1");
-  if(mysql_fetch_array($check_query)){
-      echo '',$member_username,' 已存在。<a href="javascript:history.back(-1);">返回</a>';
-      exit;
-  }
+		function test_input($data)
+	{
+ 		$data = trim($data);
+  		$data = stripslashes($data);
+  		$data = htmlspecialchars($data);
+  		return $data;
+	}
+//包含数据库文件
+include('dbcon.php');
 
-  // 插入数据库
-  mysql_query("insert into member(username,password,id_number,email,firstname,lastname,gender,status)
-  values('$member_username','$member_password','$member_id','$member_email','$member_firstname','$member_lastname','$member_gender','Active')")
-  or die(mysql_error());
-  ?>
+//检测用户名是否已经存在
+$check_query = mysql_query("SELECT username FROM member WHERE username='$member_username' limit 1");
+if(mysql_fetch_array($check_query)){
+    echo '',$member_username,' 已存在。<a href="javascript:history.back(-1);">返回</a>';
+    exit;
+}
 
-   <form action='stulogin.php' method='post' name='signup_info'>
-  	<input type='hidden' name='signup_info' value='注册成功,请登录'>
-   </form>
+// 插入数据库
+mysql_query("insert into member(username,password,id_number,email,firstname,lastname,gender,status) 
+values('$member_username','$member_password','$member_id','$member_email','$member_firstname','$member_lastname','$member_gender','Active')")
+or die(mysql_error());
+?>
 
-  ?>
-  <!-- 提交后跳转至登录 -->
-   <script language="JavaScript">
-  document.signup_info.submit();
-  </script>
+ <form action='stulogin.php' method='post' name='signup_info'>
+	<input type='hidden' name='signup_info' value='注册成功,请登录'>
+ </form>
+
+?>
+ <script language="JavaScript">
+document.signup_info.submit();
+</script>

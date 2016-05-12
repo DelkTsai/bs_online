@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Created by PhpStorm.
+ * User: zh
+ * Date: 15-10-25
+ * Time: 上午12:14
+ */
 class Mysql
 {
 
@@ -11,11 +17,11 @@ class Mysql
     private $basename = null;
     private $sql_con;
     function __construct(){
-        $this->host = "****";
-        $this->port = ****;
-        $this->name = "****";
-        $this->password = "****";
-        $this->basename ="****";
+        $this->host = "115.28.219.231";
+        $this->port = 3306;
+        $this->name = "demo";
+        $this->password = "YEmH3378sTn7kwN794C9H9mxiwQcLK";
+        $this->basename ="eb_lms";
         $this->sql_con = mysqli_connect($this->host,$this->name,$this->password);
 
         if(!$this->sql_con)
@@ -52,7 +58,10 @@ class Mysql
         return $return_val;
     }
 
-    /*运行Sql,以多维数组方式返回结果集,成功返回数组，没有查找到返回false*/
+    /*
+     * 运行Sql,以多维数组方式返回结果集
+        成功返回数组，没有查找到返回false
+    */
     function getDate($query)
     {
         $this->ret = mysqli_query($this->sql_con,$query);
@@ -112,3 +121,4 @@ class Mysql
     }
 
 }
+

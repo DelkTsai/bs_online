@@ -1,4 +1,3 @@
-<!-- 书籍信息 -->
 <?php include 'header.php';?>
 <?php include 'nav_viewallbooks.php';?>
 
